@@ -1,0 +1,63 @@
+# Publishes a release: a universal macOS binary (Apple Silicon + Intel),
+# signed ad-hoc, with its SHA-256 and the install script.
+# Push a tag (git tag v1.0.0 && git push origin v1.0.0), or run it by hand
+# from the Actions tab with the version to publish.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Version à publier, ex. v1.0.0 (le tag est créé sur ce commit s'il n'existe pas)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Vérifications
+        run: |
+          case "$TAG" in v[0-9]*) ;; *) echo "::error::version attendue sous la forme v1.2.3, reçu « $TAG »"; exit 1 ;; esac
+          go vet ./...
+          go test ./...
+
+      - name: Binaire universel
+        run: |
+          ldflags="-s -w -X github.com/M-U-C-K-A/claude-code/internal/backdrop.Version=${TAG#v}"
+          mkdir -p dist
+          for arch in arm64 amd64; do
+            CGO_ENABLED=0 GOOS=darwin GOARCH=$arch go build -trimpath -ldflags "$ldflags" -o "dist/claude-backdrop-$arch" ./cmd/claude-backdrop
+          done
+          lipo -create -output dist/claude-backdrop dist/claude-backdrop-arm64 dist/claude-backdrop-amd64
+          codesign --force --sign - dist/claude-backdrop
+          dist/claude-backdrop version
+          dist/claude-backdrop selftest --asar internal/asar/testdata/electron.asar
+          cp LICENSE dist/
+          tar -C dist -czf claude-backdrop-macos.tar.gz claude-backdrop LICENSE
+          shasum -a 256 claude-backdrop-macos.tar.gz > claude-backdrop-macos.tar.gz.sha256
+          cat claude-backdrop-macos.tar.gz.sha256
+
+      - name: Publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          files="claude-backdrop-macos.tar.gz claude-backdrop-macos.tar.gz.sha256 install.sh"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" $files --clobber
+          else
+            gh release create "$TAG" $files --target "$GITHUB_SHA" \
+              --title "claude-backdrop ${TAG}" --notes-file .github/release-notes.md
+          fi

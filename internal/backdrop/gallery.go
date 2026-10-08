@@ -235,8 +235,9 @@ func (b *Backdrop) PictureSummary(cfg Config) string {
 // 4K; a smaller original comes as is.
 const commonsWidth = 3840
 
+var userAgent = "claude-backdrop/" + Version + " (https://github.com/M-U-C-K-A/claude-code)"
+
 const (
-	userAgent   = "claude-backdrop/" + Version + " (https://github.com/M-U-C-K-A/claude-code)"
 	maxDownload = 40 << 20
 	maxRawBytes = 16 << 20 // without sips, the picture is used as is (the loader's limit)
 	// Pictures are stored in 4K: the loader sends the page a small preview of

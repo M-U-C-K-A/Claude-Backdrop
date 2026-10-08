@@ -17,7 +17,10 @@ import (
 	payload "github.com/M-U-C-K-A/claude-code/src"
 )
 
-const Version = "2.0.0"
+// Version is the release; the release build sets it from the git tag
+// (-ldflags "-X github.com/M-U-C-K-A/claude-code/internal/backdrop.Version=…").
+// The installed loader is recognised by its hash, not by this number.
+var Version = "1.0.0"
 
 const DefaultApp = "/Applications/Claude.app"
 
