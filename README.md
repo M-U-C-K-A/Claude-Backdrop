@@ -1,8 +1,10 @@
+<h1 align="center">Claude Backdrop</h1>
+
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/readme/hero-dark.svg">
-    <img alt="Claude Backdrop : une fenêtre de Claude Desktop en calques, le tableau tout en bas" src="docs/readme/hero-light.svg" width="100%">
-  </picture>
+  <a href="https://commons.wikimedia.org/wiki/File:David_-_The_Death_of_Socrates.jpg"><img alt="La Mort de Socrate, Jacques-Louis David, 1787" title="La Mort de Socrate, Jacques-Louis David, 1787" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/David_-_The_Death_of_Socrates.jpg/960px-David_-_The_Death_of_Socrates.jpg" height="128"></a>
+  <a href="https://commons.wikimedia.org/wiki/File:Jacques-Louis_David_-_Oath_of_the_Horatii_-_Google_Art_Project.jpg"><img alt="Le Serment des Horaces, Jacques-Louis David, 1784" title="Le Serment des Horaces, Jacques-Louis David, 1784" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Jacques-Louis_David_-_Oath_of_the_Horatii_-_Google_Art_Project.jpg/960px-Jacques-Louis_David_-_Oath_of_the_Horatii_-_Google_Art_Project.jpg" height="128"></a>
+  <a href="https://commons.wikimedia.org/wiki/File:Le_Pandemonium_-_John_Martin_-_Mus%C3%A9e_du_Louvre_Peintures_RF_2006_21_-_sans_cadre.jpg"><img alt="Pandémonium, John Martin, 1841" title="Pandémonium, John Martin, 1841" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Le_Pandemonium_-_John_Martin_-_Mus%C3%A9e_du_Louvre_Peintures_RF_2006_21_-_sans_cadre.jpg/960px-Le_Pandemonium_-_John_Martin_-_Mus%C3%A9e_du_Louvre_Peintures_RF_2006_21_-_sans_cadre.jpg" height="128"></a>
+  <a href="https://commons.wikimedia.org/wiki/File:%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg"><img alt="L'École d'Athènes, Raphaël, 1509–1511" title="L'École d'Athènes, Raphaël, 1509–1511" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/960px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg" height="128"></a>
 </p>
 
 <p align="center">
@@ -123,15 +125,8 @@ transparent tout seul ; [`claude-backdrop status`](#dépannage) liste ceux qui r
 
 ## Les tableaux
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/readme/paintings-dark.svg">
-    <img alt="Les quatre tableaux de la galerie : La Mort de Socrate, Le Serment des Horaces, Pandémonium, L'École d'Athènes" src="docs/readme/paintings-light.svg" width="100%">
-  </picture>
-</p>
-
-Par défaut, **chaque conversation reçoit un tableau au hasard**, et le garde si tu recharges. Quatre tableaux du
-domaine public, téléchargés depuis Wikimedia Commons à l'installation :
+Par défaut, **chaque conversation reçoit un tableau au hasard**, et le garde si tu recharges. Ce sont les quatre
+tableaux du haut de cette page, du domaine public, téléchargés depuis Wikimedia Commons à l'installation :
 
 | Tableau | Peintre | Fichier |
 |---|---|---|
@@ -177,7 +172,7 @@ Le bouton gêne une icône de la barre de titre ? Déplace-le dans `custom.css` 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/readme/settings-dark.svg">
-    <img alt="Trois réglages en mouvement : le voile, le flou de l'image, le verre" src="docs/readme/settings-light.svg" width="100%">
+    <img alt="Les réglages comme une table de mixage : voile, luminosité, flou, verre, flou du verre" src="docs/readme/settings-light.svg" width="420">
   </picture>
 </p>
 
@@ -318,8 +313,8 @@ l'onglet Actions.
   et [Lip Gloss](https://github.com/charmbracelet/lipgloss), de Charm.
 - Figures au trait dessinées avec [Hairline](https://lucasmarkes.com/lab/hairline), de Lucas Markes.
 - Tableaux : domaine public, via [Wikimedia Commons](https://commons.wikimedia.org) et
-  [The Met](https://www.metmuseum.org/art/collection/search/436105). Les illustrations de ce README en sont des
-  évocations stylisées.
+  [The Met](https://www.metmuseum.org/art/collection/search/436105) ; les images en haut de cette page sont servies
+  par Wikimedia Commons.
 
 ## Licence
 
