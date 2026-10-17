@@ -128,8 +128,9 @@ func writeManifest(t *testing.T, b *Backdrop, entries string) {
 
 func TestChooseImageAddsYourFileToTheGallery(t *testing.T) {
 	b := testBackdrop(t)
+	// a real JPEG: on macOS the picture goes through sips, which reads it
 	picture := filepath.Join(t.TempDir(), "My Picture.jpg")
-	os.WriteFile(picture, []byte("\xff\xd8\xff not really a jpeg"), 0o644)
+	writeJPEG(t, picture, 64, 48)
 	r := &silent{}
 	if err := b.ChooseImage(picture, r); err != nil {
 		t.Fatal(err)
